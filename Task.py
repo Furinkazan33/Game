@@ -18,7 +18,7 @@ class Task:
     person = None
     type = None
     
-    def __init__(self, id=None, cost="", name="", item="", person="", type=TaskType.Task):
+    def __init__(self, id :str=None, cost :str="", name :str="", item :str="", person :str="", type :TaskType=TaskType.Task):
         self.id = id or uuid.uuid4()
         self.cost = cost
         self.name = name
@@ -26,11 +26,11 @@ class Task:
         self.person = person
         self.type = type or TaskType.Task
 
-    def deserialize(line, separator=";"):
+    def deserialize(line :str, separator :str=";"):
         a = line.split(separator)
         return Task(a[1], a[2], a[3], a[4], a[5], Util.str_to_instance(a[6]))
 
-    def serialize(self, separator=";"):
+    def serialize(self, separator :str=";"):
         return str(self.__class__.__name__) + separator + \
             str(self.id) + separator + \
             str(self.cost) + separator + \
@@ -46,11 +46,4 @@ class Task:
         return str(self.id) == str(other.id)
 
 if __name__ == "__main__":
-    p1 = Task(None, "2", "t1", None, None, None)
-    p2 = Task(None, "1", "t2", "10", None, None)
-    p3 = Task(None, "3", "t3", "7", None, None)
-
-    for p in [p1, p2, p3]:
-        print(p)
-        assert(Task.deserialize(p.serialize()).serialize() == p.serialize())
-        assert(Task.deserialize(p.serialize()) == p)
+    raise RuntimeError("Not meant to be run")

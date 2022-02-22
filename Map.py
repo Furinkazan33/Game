@@ -1,6 +1,6 @@
 from enum import Enum
 from os import X_OK
-from typing import Mapping
+from typing import Mapping, Tuple
 import uuid
 import Util
 
@@ -23,7 +23,7 @@ class Map:
     z = None
     blocs = None
     
-    def __init__(self, id=None, blocs=None, x=None, y=None, z=None):
+    def __init__(self, id: str=None, blocs: list=None, x: int=None, y: int=None, z: int=None, path:str =None):
         self.id = id or str(uuid.uuid4())
         self.blocs = blocs or []
         self.x = x
@@ -35,7 +35,7 @@ class Map:
     a[0].append([])
 
 
-    def load(self, path):
+    def load(self, path: str):
         with open(path, 'r') as f:
             line = f.readline()
             line = line.rstrip()
@@ -58,7 +58,7 @@ class Map:
     
 
 
-    def save(self, path):
+    def save(self, path: str):
         with open(path, 'w') as f:
             f.write(self.__repr__())
 
@@ -78,10 +78,10 @@ class Map:
     Creates a new Map from extracting the current map around the given position (x, y, z)
     and the given distances ((dx_before, dx_after), (dy_before, dy_after), (dz_before, dz_after))
     """
-    def extract_around(self, position, distance):
+    def extract_around(self, position: Tuple, distance: Tuple):
         # Coordinates
         (px, py, pz) = position
-        # distance for before and after position
+        # distance before and after position
         ((dx_before, dx_after), (dy_before, dy_after), (dz_before, dz_after)) = distance
 
         map_extracted = []
@@ -114,23 +114,16 @@ class Map:
 
         return res
 
-    def __eq__(self, person):
-        return str(self.id) == str(person.id)
-
+    def __eq__(self, other):
+        return str(self.id) == str(other.id)
+        
 
 
 
 if __name__ == "__main__":
+    raise RuntimeError("Not meant to be run")
     
-    map_main = Map()
-    map_main.load("./data/map4020.txt")
-    print(map_main)
-    #carte.save("./data/_bak_map4020.txt")
-    
-    position = (0, 0, 0)
-    distances = ((8, 8), (3, 3), (0, 0))
-    map_extracted = map_main.extract_around(position, distances)
-    print(map_extracted)
+
 
     
 

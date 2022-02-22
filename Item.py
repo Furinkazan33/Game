@@ -20,17 +20,17 @@ class Item:
     type = None
     status = None
 
-    def __init__(self, id=None, name="", type=ItemType.ITEM, status=ItemStatus.NEW):
+    def __init__(self, id: str=None, name: str="", type: ItemType=ItemType.ITEM, status: ItemStatus=ItemStatus.NEW):
         self.id = id or uuid.uuid4()
         self.name = name
         self.type = type or ItemType.ITEM
         self.status = status or ItemStatus.NEW
     
-    def deserialize(line, separator=";"):
+    def deserialize(line: str, separator: str=";"):
         a = line.split(separator)
         return Item(a[1], a[2], Util.str_to_instance(a[3]), Util.str_to_instance(a[4]))
 
-    def serialize(self, separator=";"):
+    def serialize(self, separator: str=";"):
         return str(self.__class__.__name__) + separator + str(self.id) + separator + self.name + separator + str(self.type) + separator + str(self.status)
 
     def __repr__(self):
@@ -39,12 +39,7 @@ class Item:
     def __eq__(self, other):
         return str(self.id) == str(other.id)
 
+
+
 if __name__ == "__main__":
-    i1 = Item(None, "Marteau", ItemType.OUTIL, ItemStatus.DAMAGED)
-    i2 = Item(None, "Marteau")
-    i3 = Item(None)
-    
-    for p in [i1, i2, i3]:
-        print(p)
-        assert(Item.deserialize(p.serialize()).serialize() == p.serialize())
-        assert(Item.deserialize(p.serialize()) == p)
+    raise RuntimeError("Not meant to be run")

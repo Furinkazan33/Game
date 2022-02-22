@@ -1,0 +1,4 @@
+Task;10001;2;Test i0 pn;100001;;TaskType.Task
+Task;10002;2;Test i1 p0;100002;1002;TaskType.Task
+Task;10003;2;Test in pn;;;TaskType.Miner
+Task;10004;;;;;TaskType.Task
