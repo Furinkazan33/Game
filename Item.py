@@ -3,16 +3,16 @@ import uuid
 import Util
 
 class ItemStatus(Enum):
-    NEW = 1
-    USED = 2
-    DAMAGED = 3
-    BROKEN = 4
+    NEW = "NEW"
+    USED = "USED"
+    DAMAGED = "DAMAGED"
+    BROKEN = "BROKEN"
 
 class ItemType(Enum):
-    ITEM = 1
-    LINGE = 2
-    OUTIL = 3
-    MACHINE = 4
+    ITEM = "ITEM"
+    LINGE = "LINGE"
+    OUTIL = "OUTIL"
+    MACHINE = "MACHINE"
 
 class Item:
     id = None

@@ -3,12 +3,12 @@ import uuid
 import Util
 
 class TaskType(Enum):
-    Task = 1
-    Nettoyer = 2
-    Conduire = 3
-    Travailler = 4
-    Miner = 5
-    Shopping = 6
+    Task = "Task"
+    Nettoyer = "Nettoyer"
+    Conduire = "Conduire"
+    Travailler = "Travailler"
+    Miner = "Miner"
+    Shopping = "Shopping"
 
 class Task:
     id = None
