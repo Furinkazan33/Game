@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 class Position:
     x = None
@@ -16,5 +17,5 @@ class Position:
         return str(self.x) + " " + str(self.y) + " " + str(self.z)
 
 if __name__ == "__main__":
-    p = Position(5, 6)
-    print(p)
+    raise RuntimeError("Not meant to be run")
+    

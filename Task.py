@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from enum import Enum
 import uuid
 import Util
@@ -15,15 +16,15 @@ class Task:
     cost = None
     name = None
     item = None
-    person = None
+    player = None
     type = None
     
-    def __init__(self, id :str=None, cost :str="", name :str="", item :str="", person :str="", type :TaskType=TaskType.Task):
+    def __init__(self, id :str=None, cost :str="", name :str="", item :str="", player :str="", type :TaskType=TaskType.Task):
         self.id = id or uuid.uuid4()
         self.cost = cost
         self.name = name
         self.item = item
-        self.person = person
+        self.player = player
         self.type = type or TaskType.Task
 
     def deserialize(line :str, separator :str=";"):
@@ -36,7 +37,7 @@ class Task:
             str(self.cost) + separator + \
             str(self.name) + separator + \
             str(self.item) + separator + \
-            str(self.person) + separator + \
+            str(self.player) + separator + \
             str(self.type) 
 
     def __repr__(self):

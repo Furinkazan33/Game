@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from enum import Enum, auto
 
 class Evt(Enum):
@@ -18,5 +19,3 @@ def post_event(event_type: Evt, data):
         return
     for fn in __subscribers[event_type]:
         fn(data)
-
-

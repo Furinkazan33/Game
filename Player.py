@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 from enum import Enum
 import uuid
 import Util
 
-class Person:
+class Player:
     id = None
     lastname = None
     name = None
@@ -16,7 +17,7 @@ class Person:
 
     def deserialize(line: str, separator: str=";"):
         a = line.split(separator)
-        return Person(a[1], a[2], a[3], a[4])
+        return Player(a[1], a[2], a[3], a[4])
 
     def serialize(self, separator: str=";"):
         return str(self.__class__.__name__) + separator + str(self.id) + separator + self.lastname + separator + self.name + separator + str(self.age)

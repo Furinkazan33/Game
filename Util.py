@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 from Item import *
 from Task import TaskType

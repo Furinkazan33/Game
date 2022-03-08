@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 from Item import *
-from Person import *
+from Player import *
 from Task import *
 
 class Loader:

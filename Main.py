@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
 import Util
 from Item import *
 from Task import *
-from Person import *
+from Player import *
 from Map import *
 from Loader import Loader
 from event import *
@@ -20,11 +21,11 @@ def find_by_id(lst: str, id: str):
 
 
 if __name__ == "__main__":
-    
+
 
     # Test des chargements de fichiers data
     items = Loader.load(Item, "./data/items.txt")
-    persons = Loader.load(Person, "./data/persons.txt")
+    players = Loader.load(Player, "./data/players.txt")
     tasks = Loader.load(Task, "./data/tasks.txt")
     
 
@@ -34,10 +35,10 @@ if __name__ == "__main__":
         assert(Item.deserialize(item.serialize()).serialize() == item.serialize())
         assert(Item.deserialize(item.serialize()) == item)
 
-    for person in persons:
-        print(person)
-        assert(Person.deserialize(person.serialize()).serialize() == person.serialize())
-        assert(Person.deserialize(person.serialize()) == person)
+    for player in players:
+        print(player)
+        assert(Player.deserialize(player.serialize()).serialize() == player.serialize())
+        assert(Player.deserialize(player.serialize()) == player)
 
     for task in tasks:
         print(task)
@@ -45,11 +46,11 @@ if __name__ == "__main__":
         assert(Task.deserialize(task.serialize()) == task)
 
     for i in tasks:
-        if i.person:
-            p = find_by_id(persons, i.person)
+        if i.player:
+            p = find_by_id(players, i.player)
 
             if p:
-                print("In task : " + i.__repr__() + " person found : " + p.__repr__())
+                print("In task : " + i.__repr__() + " player found : " + p.__repr__())
 
 
     # Test des map

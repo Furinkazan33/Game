@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from enum import Enum
 from os import X_OK
 from typing import Mapping, Tuple
@@ -30,10 +31,6 @@ class Map:
         self.y = y
         self.z = z
     
-    a = []
-    a.append([])
-    a[0].append([])
-
 
     def load(self, path: str):
         with open(path, 'r') as f:
@@ -65,14 +62,15 @@ class Map:
     """
     Returns the modulo value of the given value according to the max
     """
-    def __mod(self, value: int, max: int):
+    def mod(self, value: int, max: int) -> int :
+        if 0 <= value < max:
+            return value
+
         if value < 0:
             return max + value
 		
         if value >= max:
-            return value - max + 1
-		
-        return value
+            return value - max
 	
     """
     Creates a new Map from extracting the current map around the given position (x, y, z)
@@ -93,9 +91,9 @@ class Map:
                 map_extracted[z - (pz - dz_before)].append([])
 
                 for x in range(px - dx_before, px + dx_after + 1):
-                    iz = self.__mod(z, self.z)
-                    iy = self.__mod(y, self.y)
-                    ix = self.__mod(x, self.x)
+                    iz = self.mod(z, self.z)
+                    iy = self.mod(y, self.y)
+                    ix = self.mod(x, self.x)
                     map_extracted[z - (pz - dz_before)][y - (py - dy_before)].append(self.blocs[iz][iy][ix])
 
         return Map(None, map_extracted, dx_before + dx_after + 1, dy_before + dy_after + 1, dz_before + dz_after + 1)
@@ -124,7 +122,3 @@ if __name__ == "__main__":
     raise RuntimeError("Not meant to be run")
     
 
-
-    
-
-    
