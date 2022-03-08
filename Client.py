@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+if __name__ == "__main__":
+    raise RuntimeError("Not meant to be run")
+
 import keyboard as kbd
 
 import Util
