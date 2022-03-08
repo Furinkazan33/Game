@@ -1,3 +1,0 @@
-Item;100001;T-Shirt;ItemType.ITEM;ItemStatus.NEW
-Item;100002;Short;ItemType.OUTIL;ItemStatus.USED
-Item;100003;Chaussures;ItemType.LINGE;ItemStatus.NEW

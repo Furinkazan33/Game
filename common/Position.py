@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+if __name__ == "__main__":
+    raise RuntimeError("Not meant to be run")
 
 class Position:
     x = None
@@ -16,6 +18,4 @@ class Position:
     def __repr__(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z)
 
-if __name__ == "__main__":
-    raise RuntimeError("Not meant to be run")
     

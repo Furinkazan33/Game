@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+if __name__ == "__main__":
+    raise RuntimeError("Not meant to be run")
+
 from enum import Enum
 import uuid
 import Util
@@ -28,7 +31,5 @@ class Player:
     def __eq__(self, other):
         return str(self.id) == str(other.id)
 
-if __name__ == "__main__":
-    raise RuntimeError("Not meant to be run")
 
 

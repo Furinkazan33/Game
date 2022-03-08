@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+if __name__ == "__main__":
+    raise RuntimeError("Not meant to be run")
+
 import sys
 from Item import *
 from Task import TaskType
@@ -14,5 +17,3 @@ def str_to_instance(token :str):
     return aclass(token[1])
 
 
-if __name__ == "__main__":
-    raise RuntimeError("Not meant to be run")

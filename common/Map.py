@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+if __name__ == "__main__":
+    raise RuntimeError("Not meant to be run")
+
 from enum import Enum
-from os import X_OK
-from typing import Mapping, Tuple
+from typing import Tuple
 import uuid
-import Util
 
 class BlocType(Enum):
     EMPTY = ' '
@@ -118,7 +119,5 @@ class Map:
 
 
 
-if __name__ == "__main__":
-    raise RuntimeError("Not meant to be run")
     
 
