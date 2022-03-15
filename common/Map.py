@@ -4,6 +4,7 @@ if __name__ == "__main__":
 
 from enum import Enum
 from typing import Tuple
+import Position
 import uuid
 
 class BlocType(Enum):
@@ -24,14 +25,23 @@ class Map:
     y = None
     z = None
     blocs = None
-    
+
     def __init__(self, id: str=None, blocs: list=None, x: int=None, y: int=None, z: int=None, path:str =None):
         self.id = id or str(uuid.uuid4())
         self.blocs = blocs or []
         self.x = x
         self.y = y
         self.z = z
-    
+
+    def __init__(self, d_map: dict):
+        self.id = d_map['id']
+        self.x = d_map['x']
+        self.y = d_map['y']
+        self.z = d_map['z']
+        self.load(d_map)
+
+    def load(self, d_map: dict):
+        self.blocs = d_map['blocs']
 
     def load(self, path: str):
         with open(path, 'r') as f:
@@ -39,7 +49,6 @@ class Map:
             line = line.rstrip()
             (self.x, self.y, self.z) = tuple(map(int, line.split(' ')))
 
-            
             for z in range(0, self.z):
                 self.blocs.append([])
 
@@ -48,12 +57,11 @@ class Map:
                     line = line.rstrip()
                     line = line[:-1]
                     new_line = []
-                
+
                     for c in line:
                         new_line.append(BlocType(c))
-                
+
                     self.blocs[z].append(new_line)
-    
 
 
     def save(self, path: str):
@@ -77,9 +85,10 @@ class Map:
     Creates a new Map from extracting the current map around the given position (x, y, z)
     and the given distances ((dx_before, dx_after), (dy_before, dy_after), (dz_before, dz_after))
     """
-    def extract_around(self, position: Tuple, distance: Tuple):
+    def extract_around(self, position: Position, distance: Tuple):
         # Coordinates
-        (px, py, pz) = position
+        (px, py, pz) = position.x, position.y, position.z
+        z
         # distance before and after position
         ((dx_before, dx_after), (dy_before, dy_after), (dz_before, dz_after)) = distance
 

@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
+
+def run_client(config: dict):
+    client = Client(config)
+
+    asyncio.get_event_loop().run_until_complete(client.run())
+
+
+
 if __name__ == "__main__":
 
     import sys
     sys.path.append("./common")
 
-    from Item import *
-    from Player import *
-    from Map import *
-    from event import *
+    from Client import Client
+    import asyncio
 
-    print("Connection")
+    config = {
+        'keys': { 'UP': 'z', 'DOWN': 's', 'LEFT': 'q', 'RIGHT': 'd' },
+        'url': 'ws://localhost:8080',
+        'credentials': { 'user': 'TODO', 'password': 'TODO' },
+        'around': ((20, 20), (20, 20), (20, 20)),
+    }
 
-    #connection au serveur
+    run_client(config)
 
-        #reception de la carte
-        #reception des items et autres joueurs
-        #TODO: maj de la carte depuis le dernier snapshot
 
-    #main_loop()
-        # jeu
-        # envoi et réception des maj

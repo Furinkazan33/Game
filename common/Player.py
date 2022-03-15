@@ -5,18 +5,19 @@ if __name__ == "__main__":
 from enum import Enum
 import uuid
 import Util
+import Position
 
 class Player:
-    id = None
-    lastname = None
-    name = None
-    age = None
-    
-    def __init__(self, id: str, lastname: str="", name: str="", age: str=""):
-        self.id = id or str(uuid.uuid4())
-        self.lastname = lastname
-        self.name = name
-        self.age = age
+    id: str
+    pseudo: str
+    config: dict
+    position: Position
+
+    def __init__(self, id: str, pseudo: str, config: dict, position: Position):
+        self.id = id
+        self.pseudo = pseudo
+        self.config = config
+        self.position = position
 
     def deserialize(line: str, separator: str=";"):
         a = line.split(separator)
@@ -30,6 +31,5 @@ class Player:
 
     def __eq__(self, other):
         return str(self.id) == str(other.id)
-
 
 
